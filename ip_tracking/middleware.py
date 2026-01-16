@@ -1,4 +1,4 @@
-from .models import RequestLog
+from .models import RequestLog, BlockedIP
 
 class IPTrackingMiddleware:
     def __init__(self, get_response):
@@ -14,6 +14,10 @@ class IPTrackingMiddleware:
 
         # Create the log entry in the database
         if ip:
+            #Check if the IP is blocked
+            if BlockedIP.objects.filter(ip_address=ip).exists():
+                return HttpResponseForbidden("Access Denied: Your IP has been blacklisted.")
+
             RequestLog.objects.create(
                 ip_address=ip,
                 path=request.path
@@ -21,4 +25,3 @@ class IPTrackingMiddleware:
 
         response = self.get_response(request)
         return response
-        
