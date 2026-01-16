@@ -16,7 +16,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from django.conf.urls import handler403
 
 urlpatterns = [
     path('admin/', admin.site.urls),
 ]
+
+def custom_ratelimit_handler(request, exception=None):
+    return HttpResponse("Too many requests! Please wait a minute and try again.", status=429)
+
+handler403 = custom_ratelimit_handler
