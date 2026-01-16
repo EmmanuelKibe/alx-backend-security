@@ -16,7 +16,7 @@ class IPTrackingMiddleware:
             ip = x_forwarded_for.split(',')[0]
         else:
             ip = request.META.get('REMOTE_ADDR') """
-        ip = "103.230.15.119"  # For testing purposes
+        ip = "13.36.154.207"  # For testing purposes
 
         # Create the log entry in the database
         if ip:
