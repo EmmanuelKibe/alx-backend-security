@@ -15,11 +15,13 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 from django.conf.urls import handler403
+from django.http import HttpResponse
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('ip_tracking/', include('ip_tracking.urls')),
 ]
 
 def custom_ratelimit_handler(request, exception=None):
