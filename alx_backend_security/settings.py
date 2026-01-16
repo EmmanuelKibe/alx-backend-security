@@ -119,3 +119,15 @@ USE_TZ = True
 STATIC_URL = 'static/'
 
 IPINFO_TOKEN = 'def2de670c9a1f'
+
+# Ratelimit settings
+RATELIMIT_ENABLE = True
+RATELIMIT_USE_CACHE = 'default'
+
+# Use LocMemCache for local development
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
+        'LOCATION': 'unique-snowflake',
+    }
+}
