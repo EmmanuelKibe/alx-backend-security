@@ -1,0 +1,32 @@
+# --- Virtual Environments ---
+venv/
+.venv/
+env/
+bin/
+lib/
+share/
+Include/
+pyvenv.cfg
+
+# --- Python / Django specific ---
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.coverage
+htmlcov/
+
+# --- Databases ---
+# Do not push your local database to GitHub
+db.sqlite3
+db.sqlite3-journal
+
+# --- Environment Secrets ---
+# For when you start using .env files for passwords/keys
+.env
+.venv
+.secrets
+
+# --- OS specific ---
+.DS_Store
+Thumbs.db
